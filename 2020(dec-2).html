@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form">
+        Customer Name: <input type="text" name="" id="cn">
+        Email: <input type="email" name="" id="em">
+        Invoice Number:<input type="text" name="" id="in">
+        Payment method: <select name="" id="sel">
+            <option value="0">Payment Method</option>
+            <option value="1">Credit</option>
+            <option value="2">Debit</option>
+        </select>
+        “I Agree to the terms and conditions"<input type="checkbox" name="" id="che">
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        //let's validate customer name field before creating it
+        //we should create a variable for form
+        var form = document.getElementById('form')
+        form.addEventListener('submit',function (event){
+            //this variable is used to get html's value
+            //cn is id name
+            var cusname = document.getElementById('cn').value
+            var email = document.getElementById('em').value
+            var invicenum = document.getElementById('in').value
+            //variable for selection
+            var select = document.getElementById('sel').value//use the value for selection
+            //Email has two part local and host part
+            //Let's make a variable for email characters
+            var emc = /[a-zA-Z0-9!#$%^&*~]+@+[a-z0-9-]+[a-z]/
+            var inc = /[0-9]/ //this for invoice number,it should be included numeric values only
+            //variable for checked
+            var che = document.getElementById('che').checked
+            if(cusname ===''){
+                alert('Enter customer name')
+            }
+            //let's check is it valid or invalid?
+            if(!emc.test(email)){
+                alert('Enter valid email address')
+            }
+            if(!inc.test(invicenum)){
+                alert('Enter numeric values only')
+            }
+            if(select === '0'){
+                alert('Please select the method')
+            }
+            //validation for checked
+            if(!che){
+                alert('check again')
+            }
+        })
+    </script>
+</body>
+</html>
